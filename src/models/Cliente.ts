@@ -1,17 +1,17 @@
 export class Cliente {
-  private id: number;
+  private id?: number; 
   private nome: string;
   private cpf: string;
-  private telefone: string;
+  private email: string;
 
-  constructor(id: number, nome: string, cpf: string, telefone: string) {
+  constructor(nome: string, cpf: string, email: string, id?: number) {
     this.id = id;
     this.nome = nome;
     this.cpf = cpf;
-    this.telefone = telefone;
+    this.email = email;
   }
 
-  getId(): number {
+  getId(): number | undefined {
     return this.id;
   }
 
@@ -23,19 +23,20 @@ export class Cliente {
     return this.cpf;
   }
 
-  getTelefone(): string {
-    return this.telefone;
+  getEmail(): string {
+    return this.email;
   }
 
   setNome(novoNome: string): void {
     this.nome = novoNome;
   }
 
-  setTelefone(novoTelefone: string): void {
-    this.telefone = novoTelefone;
+  setEmail(novoEmail: string): void {
+    this.email = novoEmail;
   }
 
   exibirDetalhes(): void {
-    console.log(`[Cliente ID: ${this.id}] ${this.nome} | CPF: ${this.cpf} | Tel: ${this.telefone}`);
+    const idDisplay = this.id ? `ID: ${this.id}` : "ID: (Não atribuído)";
+    console.log(`[Cliente ${idDisplay}] ${this.nome} | CPF: ${this.cpf} | Email: ${this.email}`);
   }
 }

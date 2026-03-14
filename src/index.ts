@@ -101,8 +101,8 @@ async function main() {
       case 9: {
         const nome = await question("Nome: ");
         const cpf = await question("CPF: ");
-        const tel = await question("Telefone: ");
-        doceria.cadastrarCliente(nome, cpf, tel);
+        const email = await question("Email: ");
+        doceria.cadastrarCliente(nome, cpf, email);
         break;
       }
       case 10:

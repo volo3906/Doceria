@@ -1,11 +1,11 @@
 export class Doce {
-  private id: number;
+  private id?: number;
   private nome: string;
   private categoria: string;
   private preco: number;
   private quantidadeEstoque: number;
 
-  constructor(id: number, nome: string, categoria: string, preco: number, quantidade: number) {
+  constructor(nome: string, categoria: string, preco: number, quantidade: number, id?: number) {
     this.id = id;
     this.nome = nome;
     this.categoria = categoria;
@@ -13,7 +13,7 @@ export class Doce {
     this.quantidadeEstoque = quantidade;
   }
 
-  getId(): number {
+  getId(): number | undefined {
     return this.id;
   }
 
@@ -46,8 +46,9 @@ export class Doce {
   }
 
   exibirDetalhes(): void {
+    const idDisplay = this.id ? `${this.id}` : "(Novo)";
     console.log(
-      `[${this.id}] ${this.nome} (${this.categoria}) - Preco: R$ ${this.preco.toFixed(2)} | Estoque: ${this.quantidadeEstoque} unid.`
+      `[${idDisplay}] ${this.nome} (${this.categoria}) - Preco: R$ ${this.preco.toFixed(2)} | Estoque: ${this.quantidadeEstoque} unid.`
     );
   }
 

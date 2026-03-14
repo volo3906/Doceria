@@ -1,4 +1,6 @@
-# Doceria Gourmet 
+# Doceria Gourmet - Versão TypeScript
+
+Este projeto é uma conversão direta do sistema original em C++ para TypeScript, mantendo a lógica de negócios e a estrutura de classes.
 
 ## Estrutura de Arquivos
 
@@ -38,8 +40,6 @@ bd/
 - A entrada de dados foi adaptada de `cin` para o módulo `readline` do Node.js usando `async/await`.
 - As classes foram organizadas em pastas `models` e `services` para seguir as melhores práticas de TypeScript/Node.js.
 - A lógica de IDs incrementais e vetores foi mantida idêntica à original.
-
-
 ---
 ```mermaid
 classDiagram
@@ -48,14 +48,14 @@ class Cliente {
     -id: number
     -nome: string
     -cpf: string
-    -telefone: string
-    +constructor(id: number, nome: string, cpf: string, telefone: string)
+    -email: string
+    +constructor(nome: string, cpf: string, email: string, id?: number)
     +getId(): number
     +getNome(): string
     +getCpf(): string
-    +getTelefone(): string
+    +getEmail(): string
     +setNome(novoNome: string): void
-    +setTelefone(novoTelefone: string): void
+    +setEmail(novoEmail: string): void
     +exibirDetalhes(): void
 }
 
@@ -65,7 +65,7 @@ class Doce {
     -categoria: string
     -preco: number
     -quantidadeEstoque: number
-    +constructor(id: number, nome: string, categoria: string, preco: number, quantidade: number)
+    +constructor(nome: string, categoria: string, preco: number, quantidade: number, id?: number)
     +getId(): number
     +getNome(): string
     +getCategoria(): string
@@ -86,7 +86,7 @@ class Venda {
     -quantidade: number
     -valorTotal: number
     -dataVenda: string
-    +constructor(id: number, clienteId: number, doceId: number, quantidade: number, valorTotal: number, dataVenda: string)
+    +constructor(clienteId: number, doceId: number, quantidade: number, valorTotal: number, dataVenda: string, id?: number)
     +getId(): number
     +getClienteId(): number
     +getDoceId(): number
@@ -112,7 +112,7 @@ class GerenciadorDoceria {
     +buscarPorCategoria(categoria: string): void
     +registrarVenda(clienteId: number, doceId: number, qtd: number, data: string): void
     +exibirRelatorioFinanceiro(): void
-    +cadastrarCliente(nome: string, cpf: string, telefone: string): void
+    +cadastrarCliente(nome: string, cpf: string, email: string): void
     +listarClientes(): void
     +buscarCliente(id: number): Cliente | null
 }
@@ -120,4 +120,5 @@ class GerenciadorDoceria {
 GerenciadorDoceria "1" *-- "*" Doce : gerencia
 GerenciadorDoceria "1" *-- "*" Cliente : gerencia
 GerenciadorDoceria "1" *-- "*" Venda : registra
+
 ```

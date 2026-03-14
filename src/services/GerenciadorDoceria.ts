@@ -6,6 +6,7 @@ export class GerenciadorDoceria {
   private estoque: Doce[] = [];
   private historicoVendas: Venda[] = [];
   private clientes: Cliente[] = [];
+
   private proximoId: number = 1;
   private proximaVendaId: number = 1;
   private proximoClienteId: number = 1;
@@ -13,7 +14,7 @@ export class GerenciadorDoceria {
   constructor() {}
 
   criarDoce(nome: string, categoria: string, preco: number, qtd: number): void {
-    const novoDoce = new Doce(this.proximoId++, nome, categoria, preco, qtd);
+    const novoDoce = new Doce(nome, categoria, preco, qtd, this.proximoId++);
     this.estoque.push(novoDoce);
     console.log(`-> Doce '${nome}' cadastrado com ID ${this.proximoId - 1}.`);
   }
@@ -81,12 +82,12 @@ export class GerenciadorDoceria {
       if (d.vender(qtd)) {
         const total = d.getPreco() * qtd;
         const novaVenda = new Venda(
-          this.proximaVendaId++,
           clienteId,
           doceId,
           qtd,
           total,
-          data
+          data,
+          this.proximaVendaId++
         );
         this.historicoVendas.push(novaVenda);
         console.log("-> Sucesso: Venda registada para o cliente!");
@@ -119,8 +120,8 @@ export class GerenciadorDoceria {
     console.log("====================================\n");
   }
 
-  cadastrarCliente(nome: string, cpf: string, telefone: string): void {
-    const novoCliente = new Cliente(this.proximoClienteId++, nome, cpf, telefone);
+  cadastrarCliente(nome: string, cpf: string, email: string): void {
+    const novoCliente = new Cliente(nome, cpf, email, this.proximoClienteId++);
     this.clientes.push(novoCliente);
     console.log(`-> Cliente '${nome}' cadastrado!`);
   }

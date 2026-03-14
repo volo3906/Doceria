@@ -1,5 +1,5 @@
 export class Venda {
-  private id: number;
+  private id?: number;
   private clienteId: number;
   private doceId: number;
   private quantidade: number;
@@ -7,12 +7,12 @@ export class Venda {
   private dataVenda: string;
 
   constructor(
-    id: number,
     clienteId: number,
     doceId: number,
     quantidade: number,
     valorTotal: number,
-    dataVenda: string
+    dataVenda: string,
+    id?: number
   ) {
     this.id = id;
     this.clienteId = clienteId;
@@ -22,7 +22,7 @@ export class Venda {
     this.dataVenda = dataVenda;
   }
 
-  getId(): number {
+  getId(): number | undefined {
     return this.id;
   }
 
@@ -47,7 +47,8 @@ export class Venda {
   }
 
   exibirDetalhes(): void {
-    console.log(`[Venda ID: ${this.id}] Data: ${this.dataVenda}`);
+    const idDisplay = this.id ? `ID: ${this.id}` : "ID: (Novo)";
+    console.log(`[Venda ${idDisplay}] Data: ${this.dataVenda}`);
     console.log(` -> Cliente ID : ${this.clienteId}`);
     console.log(` -> Doce ID    : ${this.doceId}`);
     console.log(` -> Quantidade : ${this.quantidade} unid.`);
