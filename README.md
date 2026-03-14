@@ -1,21 +1,19 @@
-# Doceria Gourmet - Versão TypeScript
-
-Este projeto é uma conversão direta do sistema original em C++ para TypeScript, mantendo a lógica de negócios e a estrutura de classes.
+# Doceria Gourmet 
 
 ## Estrutura de Arquivos
 
 ```text
 bd/
 ├── src/
-│   ├── models/           (Equivalente aos headers/cpp de Cliente, Doce, Venda)
+│   ├── models/           
 │   │   ├── Cliente.ts
 │   │   ├── Doce.ts
 │   │   └── Venda.ts
-│   ├── services/         (Equivalente ao GerenciadorDoceria)
+│   ├── services/         
 │   │   └── GerenciadorDoceria.ts
-│   └── index.ts          (Equivalente ao main.cpp)
-├── package.json          (Configuração do projeto Node.js)
-├── tsconfig.json         (Configuração do compilador TypeScript)
+│   └── index.ts          
+├── package.json          
+├── tsconfig.json         
 └── README.md
 ```
 
