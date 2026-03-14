@@ -1,6 +1,4 @@
-# Doceria Gourmet - Versão TypeScript
-
-Este projeto é uma conversão direta do sistema original em C++ para TypeScript, mantendo a lógica de negócios e a estrutura de classes.
+# Doceria Gourmet 
 
 ## Estrutura de Arquivos
 
